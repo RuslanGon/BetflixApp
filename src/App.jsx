@@ -1,10 +1,11 @@
 import { Route, Routes } from 'react-router-dom'
 import './App.css'
+import Layout from './components/Layout.jsx'
 
 const App = () => {
   return (
    <Routes>
-    <Route path=''></Route>
+   <Route path="/" element={<Layout />} /> 
    </Routes>
   )
 }
