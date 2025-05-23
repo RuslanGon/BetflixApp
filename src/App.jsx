@@ -1,7 +1,6 @@
 import { Route, Routes } from 'react-router-dom'
 import './App.css'
 import Layout from './components/Layout.jsx'
-
 import MoviesPage from './pages/MoviesPage/MoviesPage.jsx'
 import MovieDetails from './pages/MovieDatails/MovieDetails.jsx'
 import MovieActher from './pages/MovieActher/MovieActher.jsx'
