@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import MovieIcon from '@mui/icons-material/Movie';
+import MovieIcon from "@mui/icons-material/Movie";
+import MenuIcon from "@mui/icons-material/Menu";
 import {
   AppBar,
   Toolbar,
@@ -13,15 +14,16 @@ import {
   Container,
   Slide,
   useScrollTrigger,
-  Box
+  Box,
+  Typography
 } from "@mui/material";
-import MenuIcon from "@mui/icons-material/Menu";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleDrawerToggle = () => {
-    setIsOpen((prevState) => !prevState);
+    setIsOpen((prev) => !prev);
   };
 
   const trigger = useScrollTrigger({
@@ -33,21 +35,35 @@ const Navbar = () => {
       <AppBar position="sticky">
         <Container maxWidth="lg">
           <Toolbar>
-            <IconButton color="inherit" onClick={handleDrawerToggle}>
+            <IconButton
+              color="inherit"
+              edge="start"
+              onClick={handleDrawerToggle}
+              sx={{ mr: 2 }}
+            >
               <MenuIcon />
             </IconButton>
+
+            <Typography
+              component={Link}
+              to="/"
+              variant="h6"
+              color="inherit"
+              sx={{ textDecoration: "none", flexGrow: 1 }}
+            >Betflix
+            </Typography>
             <Drawer anchor="left" open={isOpen} onClose={handleDrawerToggle}>
-              <Box sx={{width: 250}} onClick={handleDrawerToggle}>
-              <List>
-                <ListItem disablePadding>
-                  <ListItemIcon>
-                   <MovieIcon />
-                  </ListItemIcon>
-                  <ListItemButton>
-                    <ListItemText primary="Фильмы" />
-                  </ListItemButton>
-                </ListItem>
-              </List>
+              <Box sx={{ width: 250 }} role="presentation" onClick={handleDrawerToggle}>
+                <List>
+                  <ListItem disablePadding>
+                    <ListItemButton component={Link} to="/movie">
+                      <ListItemIcon>
+                        <MovieIcon />
+                      </ListItemIcon>
+                      <ListItemText primary="Фильмы" />
+                    </ListItemButton>
+                  </ListItem>
+                </List>
               </Box>
             </Drawer>
           </Toolbar>
