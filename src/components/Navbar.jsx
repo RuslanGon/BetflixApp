@@ -39,15 +39,13 @@ const Navbar = () => {
               color="inherit"
               edge="start"
               onClick={handleDrawerToggle}
-              sx={{ mr: 2 }}
-            >
+              sx={{ mr: 2 }}>
               <MenuIcon />
             </IconButton>
-
             <Typography
               component={Link}
               to="/"
-              variant="h6"
+              variant="h4"
               color="inherit"
               sx={{ textDecoration: "none", flexGrow: 1 }}
             >Betflix
