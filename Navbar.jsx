@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import MovieIcon from '@mui/icons-material/Movie';
 import {
   AppBar,
   Toolbar,
@@ -8,9 +9,11 @@ import {
   ListItem,
   ListItemButton,
   ListItemText,
+  ListItemIcon,
   Container,
   Slide,
-  useScrollTrigger
+  useScrollTrigger,
+  Box
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 
@@ -21,7 +24,6 @@ const Navbar = () => {
     setIsOpen((prevState) => !prevState);
   };
 
-  // Скрытие AppBar при скролле
   const trigger = useScrollTrigger({
     target: typeof window !== "undefined" ? window : undefined,
   });
@@ -34,18 +36,19 @@ const Navbar = () => {
             <IconButton color="inherit" onClick={handleDrawerToggle}>
               <MenuIcon />
             </IconButton>
-            <Drawer
-              anchor="left"
-              open={isOpen}
-              onClose={handleDrawerToggle}
-            >
-              <List sx={{ width: 250 }}>
+            <Drawer anchor="left" open={isOpen} onClose={handleDrawerToggle}>
+              <Box sx={{width: 250}} onClick={handleDrawerToggle}>
+              <List>
                 <ListItem disablePadding>
-                  <ListItemButton sx={{ textAlign: "center" }}>
+                  <ListItemIcon>
+                   <MovieIcon />
+                  </ListItemIcon>
+                  <ListItemButton>
                     <ListItemText primary="Фильмы" />
                   </ListItemButton>
                 </ListItem>
               </List>
+              </Box>
             </Drawer>
           </Toolbar>
         </Container>
