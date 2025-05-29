@@ -86,7 +86,7 @@ const MoviesPage = ({ movies = [], loading = false, error = null, hasMore = fals
 };
 
 const App = () => {
-  const [query, setQuery] = useState('');
+
   const [searchTerm, setSearchTerm] = useState('love'); // По умолчанию ищем "love"
   const [movies, setMovies] = useState([]);
   const [page, setPage] = useState(1);
@@ -135,45 +135,10 @@ const App = () => {
     }
   }, [page]);
 
-  const handleSearch = () => {
-    if (query.trim() !== '') {
-      setSearchTerm(query.trim());
-    }
-  };
-
+ 
   return (
     <div style={{ maxWidth: 1000, margin: '0 auto', padding: 70 }}>
-      <div style={{ marginBottom: 20, display: 'flex', gap: 10 }}>
-        <input
-          type="text"
-          value={query}
-          onChange={e => setQuery(e.target.value)}
-          placeholder="Введите название фильма"
-          style={{
-            flexGrow: 1,
-            padding: 10,
-            fontSize: 16,
-            borderRadius: 4,
-            border: '1px solid #ccc'
-          }}
-          onKeyDown={e => { if (e.key === 'Enter') handleSearch(); }}
-        />
-        <button
-          onClick={handleSearch}
-          style={{
-            padding: '10px 20px',
-            fontSize: 16,
-            cursor: 'pointer',
-            borderRadius: 4,
-            border: 'none',
-            backgroundColor: '#1976d2',
-            color: '#fff'
-          }}
-        >
-          Поиск
-        </button>
-      </div>
-
+    
       <MoviesPage
         movies={movies}
         loading={loading}
