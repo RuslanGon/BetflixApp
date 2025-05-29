@@ -4,12 +4,15 @@ import './index.css'
 import App from './App.jsx'
 import { BrowserRouter } from 'react-router-dom'
 import CssBaseline from '@mui/material/CssBaseline';
+import ToggleColorMode from './context/ToggleColorMode.jsx';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
+    <ToggleColorMode>
     <BrowserRouter>
     <CssBaseline />
     <App />
     </BrowserRouter>
+    </ToggleColorMode>
   </StrictMode>,
 )
