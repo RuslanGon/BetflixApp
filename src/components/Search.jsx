@@ -2,7 +2,7 @@ import React from 'react';
 
 const Search = ({ query, setQuery, onSearch }) => {
   return (
-    <div style={{ marginBottom: 20, display: 'flex', gap: 10 }}>
+    <div style={{ display: 'flex', gap: 10 }}>
       <input
         type="text"
         value={query}
