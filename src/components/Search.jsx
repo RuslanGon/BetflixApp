@@ -13,7 +13,9 @@ const Search = ({ query, setQuery, onSearch }) => {
           padding: 10,
           fontSize: 16,
           borderRadius: 4,
-          border: '1px solid #ccc'
+          border: '1px solid #ccc',
+          backgroundColor: 'inherit',
+          color: 'inherit'
         }}
         onKeyDown={e => { if (e.key === 'Enter') onSearch(); }}
       />

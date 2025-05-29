@@ -20,12 +20,11 @@ import {
   useScrollTrigger,
 } from '@mui/material';
 import React, { useContext, useState } from 'react';
-import { Link as RouterLink } from 'react-router-dom';
+import { Link as RouterLink, useNavigate } from 'react-router-dom';
 
 import { iconComponents, MOVIE_LISTS, TOP_LISTS } from '../constants.js';
 import { ColorModeContext } from '../context/ToggleColorMode.jsx';
 import Search from './Search.jsx';
-
 
 const Icon = ({ iconName }) => {
   const IconComponent = iconComponents[iconName];
@@ -33,6 +32,15 @@ const Icon = ({ iconName }) => {
 };
 
 export default function Navbar() {
+  const [query, setQuery] = useState('');
+  const navigate = useNavigate();
+
+  const handleSearch = () => {
+    if (query.trim()) {
+      navigate(`/search?query=${encodeURIComponent(query.trim())}`);
+    }
+  };
+
   const [isOpen, setOpen] = useState(false);
   const { toggleColorMode, mode } = useContext(ColorModeContext);
 
@@ -52,6 +60,7 @@ export default function Navbar() {
             <IconButton color="inherit" onClick={handleDrawerToggle}>
               <MenuIcon />
             </IconButton>
+
             <Drawer open={isOpen} onClose={handleDrawerToggle}>
               <Box sx={{ width: 250 }} onClick={handleDrawerToggle}>
                 <List>
@@ -85,6 +94,7 @@ export default function Navbar() {
                 </List>
               </Box>
             </Drawer>
+
             <Stack
               flexDirection="row"
               justifyContent="space-between"
@@ -99,7 +109,9 @@ export default function Navbar() {
               >
                 betflix
               </Typography>
-              <Search />
+
+              <Search query={query} setQuery={setQuery} onSearch={handleSearch} />
+
               <IconButton color="inherit" onClick={toggleColorMode}>
                 {mode === 'dark' ? <Brightness7 /> : <Brightness4 />}
               </IconButton>
